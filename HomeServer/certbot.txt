@@ -1,0 +1,21 @@
+sudo certbot --nginx -d www.eduquant.in -d eduquant.in -d backend.eduquant.in
+sudo certbot --nginx -d www.trackwellness.in  -d trackwellness.in -d report.trackwellness.in -d dalip.trackwellness.in -d dalip.trackwellness.in -d backend.trackwellness.in
+sudo certbot --nginx -d www.vikaselectricals.shop  -d vikaselectricals.shop
+sudo certbot --nginx -d www.rahulluthra.in  -d rahulluthra.in -d report.algoapp.in -d docs.algoapp.in -d rahulprofile.algoapp.in
+sudo certbot --nginx -d records.rahulluthra.in 
+sudo certbot --nginx -d ledger.rahulluthra.in 
+sudo certbot --nginx -d dash.rahulluthra.in -d music.rahulluthra.in -d photos.rahulluthra.in -d pay.rahulluthra.in -d nodemailer.rahulluthra.in -d towel.rahulluthra.in 
+sudo certbot --nginx -d www.amanluthra.com  -d amanluthra.com
+sudo certbot --nginx -d ledger.amanluthra.com -d records.amanluthra.com -d dash.amanluthra.com
+sudo certbot --nginx -d billback.orbe.in  -d bill.orbe.in -d video.orbe.in
+sudo certbot --nginx -d amexbackend.algoapp.in -d amex.algoapp.in -d serial.algoapp.in
+sudo certbot --nginx -d thebusinessb.algoapp.in -d thebusiness.algoapp.in -d fileserver.algoapp.in -d fileserverb.algoapp.in
+sudo certbot --nginx -d flipkart.algoapp.in -d flipkartb.algoapp.in -d echolens.algoapp.in
+sudo certbot --nginx -d www.algoapp.in  -d algoapp.in -d eyeage.algoapp.in -d eyeageb.algoapp.in
+sudo certbot --nginx -d www.orbe.in  -d orbe.in -d amazon.orbe.in -d amazonb.orbe.in -d call.orbe.in -d callb.orbe.in -d tiyabakers.orbe.in -d tiyabakersb.orbe.in
+sudo certbot --nginx -d addverb.algoapp.in -d addverbb.algoapp.in -d pindidarbar.orbe.in -d pindidarbarb.orbe.in -d narulaproperties.orbe.in
+sudo certbot --nginx -d vijay.rahulluthra.in -d vijayl.rahulluthra.in -d profiles.rahulluthra.in
+sudo certbot --nginx -d www.ojasadvisors.com -d ojasadvisors.com -d back.ojasadvisors.com
+sudo certbot --nginx -d sslegal.algoapp.in
+sudo certbot --nginx -d lockbackend.orbe.in -d lock.orbe.in -d survana.orbe.in
+sudo certbot --nginx -d www.survana.in -d survana.in

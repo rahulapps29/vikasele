@@ -1,0 +1,944 @@
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name dalip.trackwellness.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:3995;  # Proxy requests to the backend server running on localhost:3995
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name backend.trackwellness.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:3996;  # Proxy requests to the backend server running on localhost:3996
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name vikaselectricals.shop www.vikaselectricals.shop;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4002;  # Proxy requests to the backend server running on localhost:4002
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+ 
+  location /api/ {
+     proxy_pass http://127.0.0.1:4003;  # Proxy requests to the backend server running on localhost:4003
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+ 
+}
+
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name trackwellness.in www.trackwellness.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4004;  # Proxy requests to the backend server running on localhost:4004
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name report.trackwellness.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4005;  # Proxy requests to the backend server running on localhost:4005
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+server {
+    listen 80;
+    server_name rahulluthra.in www.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4011;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /waterlevel/ {
+        proxy_pass http://127.0.0.1:4012;  # Backend service running on port 4012
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    
+    location /measure/ {
+        proxy_pass http://127.0.0.1:4013;  # Backend service running on port 4013
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    
+       location /rovinbackend/ {
+        proxy_pass http://127.0.0.1:4014;  # Backend service running on port 4014
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    
+           location /rovinfrontend/ {
+        proxy_pass http://127.0.0.1:4015;  # Backend service running on port 4015
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+           location /sms/ {
+        proxy_pass http://127.0.0.1:4016;  # Backend service running on port 4016
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name ledger.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4017;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name records.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4018;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+    
+    
+server {
+    listen 80;
+    server_name dash.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4019;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name music.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4020;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name photos.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4021;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name ledger.amanluthra.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:4022;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name records.amanluthra.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:4023;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name dash.amanluthra.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:4024;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name amanluthra.com www.amanluthra.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:4025;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name pay.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4026;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name sukrati.com www.sukrati.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:4027;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name nodemailer.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4028;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name billback.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4029;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name bill.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4030;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name towel.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4031;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name sumit.trackwellness.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4032;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name serial.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4033;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name amexbackend.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4034;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name amex.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4035;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name thebusiness.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4036;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name thebusinessb.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4037;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name fileserver.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4038;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name fileserverb.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4039;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name video.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4041;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name flipkart.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4042;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name flipkartb.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4043;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name algoapp.in www.algoapp.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4046;  # Proxy requests to the backend server running on localhost:4046
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name orbe.in www.orbe.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4047;  # Proxy requests to the backend server running on localhost:4047
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+server {
+    listen 80;
+    server_name amazon.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4048;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name amazonb.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4049;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name addverb.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4050;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # WebSocket support
+    location /ws/ {
+        proxy_pass http://127.0.0.1:4050;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+    }
+}
+
+server {
+    listen 80;
+    server_name addverbb.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4051;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # WebSocket support
+    location /ws/ {
+        proxy_pass http://127.0.0.1:4051;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name echolens.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4052;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name docs.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4053;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name report.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4054;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name vijay.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4055;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name vijayl.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4056;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name billsback.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4057;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name bills.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4058;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name profiles.rahulluthra.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4059;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name rahulprofile.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4060;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name eduquant.in www.eduquant.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4061;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name backend.eduquant.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4062;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name call.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4063;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name callb.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4064;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name eyeage.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4065;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name eyeageb.algoapp.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4066;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name tiyabakers.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4067;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name tiyabakersb.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4068;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name pindidarbar.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4069;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+    listen 80;
+    server_name pindidarbarb.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4070;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name narulaproperties.orbe.in;
+
+    location / {
+        proxy_pass http://127.0.0.1:4071;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name ojasadvisors.com www.ojasadvisors.com;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4072;  # Proxy requests to the backend server running on localhost:4047
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name back.ojasadvisors.com;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4073;  # Proxy requests to the backend server running on localhost:4047
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name sslegal.algoapp.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4074;  # Proxy requests to the backend server running on localhost:4047
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name ollama.orbe.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:11434;  # Proxy requests to the backend server running on localhost:4047
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name lockbackend.orbe.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4075;  # Proxy requests to the backend server running on localhost:4075
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name lock.orbe.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4076;  # Proxy requests to the backend server running on localhost:4076
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name survana.in www.survana.in survana.orbe.in;  # Server name or domain name this block will respond to
+
+ location / {
+     proxy_pass http://127.0.0.1:4077;  # Proxy requests to the backend server running on localhost:4077
+     proxy_set_header Host $host;  # Set the Host header to the client's original host
+     proxy_set_header X-Real-IP $remote_addr;  # Set the X-Real-IP header to the client's IP address
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Append client's IP addresses to X-Forwarded-For header
+     proxy_set_header X-Forwarded-Proto $scheme;  # Set the X-Forwarded-Proto header to the client's protocol (http or https)
+ }
+}

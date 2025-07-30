@@ -1,0 +1,37 @@
+pm2 start npm --name mobile-dashboard -- start
+pm2 start npm --name sumit_blood_sugar -- start
+
+pm2 start npm --name esp32waterlevel -- start
+pm2 start npm --name amex_backend -- start
+pm2 start npm --name flipbackb -- start
+
+pm2 start npm --name thebusiness_backend -- start
+
+pm2 start npm --name thebusiness_frontend -- start
+pm2 start npm --name serialnumber -- start
+
+const MONGO_URI = "mongodb+srv://rahul:rahul@atlascluster.umutyha.mongodb.net/Flip?retryWrites=true&w=majority&appName=AtlasCluster";
+
+
+
+sudo nano /etc/nginx/sites-available/default
+
+sudo nginx -t
+
+sudo systemctl reload nginx
+
+
+
+pm2 start npm --name fileserverb -- start
+pm2 start npm --name "my-app-dev" -- run dev
+pm2 start npm --name "flipfront" -- run dev
+
+sudo nano /etc/nginx/nginx.conf
+
+http {
+    client_max_body_size 50M; # Set the desired limit (e.g., 50MB)
+}
+
+
+sudo ufw allow 4042
+
