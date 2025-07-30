@@ -1,0 +1,36 @@
+
+rm /etc/nginx/sites-enabled/default
+
+
+
+nano /etc/nginx/sites-available/vikaselectricals.shop
+
+
+
+
+then 
+
+server {
+    listen 80;
+    server_name vikaselectricals.shop www.vikaselectricals.shop;
+
+    location / {
+        proxy_pass http://localhost:5173;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+ln -s /etc/nginx/sites-available/vikaselectricals.shop /etc/nginx/sites-enabled/
+
+
+ls -l /etc/nginx/sites-enabled/
+
+
+apt install certbot python3-certbot-nginx -y
+certbot --nginx -d vikaselectricals.shop -d www.vikaselectricals.shop
+certbot renew --dry-run
+
