@@ -7,6 +7,6 @@ export default {
   server: {
     allowedHosts: ["vikaselectricals.shop", "www.vikaselectricals.shop"],
     host: true,
-    port: 5173, // or whatever you're using
+    port: 3995, // or whatever you're using
   },
 };
