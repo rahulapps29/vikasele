@@ -320,3 +320,27 @@ sudo certbot --nginx -d backend.rahulluthra.in
 sudo certbot --nginx -d utility.rahulluthra.in 
 sudo certbot --nginx -d ledger.rahulluthra.in 
 
+
+
+
+sudo nano /etc/nginx/sites-available/echolens_algoapp.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name echolens.algoapp.in;  
+
+ location / {
+        proxy_pass http://localhost:4052;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo ln -s /etc/nginx/sites-available/echolens_algoapp.in /etc/nginx/sites-enabled/
+
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d echolens.algoapp.in
+
