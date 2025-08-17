@@ -278,7 +278,7 @@ server {
  server_name photos.rahulluthra.in;  
 
  location / {
-        proxy_pass http://192.168.1.197:4021;
+        proxy_pass http://localhost:4021;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -343,4 +343,69 @@ sudo ln -s /etc/nginx/sites-available/echolens_algoapp.in /etc/nginx/sites-enabl
 sudo ls -l /etc/nginx/sites-enabled/
 
 sudo certbot --nginx -d echolens.algoapp.in
+
+
+sudo nano /etc/nginx/sites-available/flipkart_frontend_algoapp.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name flipkart.algoapp.in;  
+
+ location / {
+        proxy_pass http://localhost:4042;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo ln -s /etc/nginx/sites-available/flipkart_frontend_algoapp.in /etc/nginx/sites-enabled/
+
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d flipkart.algoapp.in
+
+
+sudo nano /etc/nginx/sites-available/flipkart_backend_algoapp.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name flipkartb.algoapp.in;  
+
+ location / {
+        proxy_pass http://localhost:4043;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo ln -s /etc/nginx/sites-available/flipkart_backend_algoapp.in /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-enabled/
+sudo certbot --nginx -d flipkartb.algoapp.in
+pm2 start npm --name algoapp_flipkart_backend -- start
+
+
+sudo nano /etc/nginx/sites-available/records_rahulluthra.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name records.rahulluthra.in;  
+
+ location / {
+        proxy_pass http://localhost:4018;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo ln -s /etc/nginx/sites-available/records_rahulluthra.in /etc/nginx/sites-enabled/
+
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d records.rahulluthra.in 
 
