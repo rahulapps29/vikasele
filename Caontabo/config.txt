@@ -474,3 +474,28 @@ sudo ln -s /etc/nginx/sites-available/eduquant_prupley.com /etc/nginx/sites-enab
 sudo ls -l /etc/nginx/sites-enabled/
 
 sudo certbot --nginx -d eduquant.prupley.com
+
+
+
+sudo nano /etc/nginx/sites-available/eduquant.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name www.eduquant.in eduquant.in;  
+
+ location / {
+        proxy_pass http://localhost:4062;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo ln -s /etc/nginx/sites-available/eduquant.in /etc/nginx/sites-enabled/
+
+sudo ls -l /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-available/
+
+sudo certbot --nginx -d eduquant.in -d www.eduquant.in
+pm2 start npm --name eduquantbuild -- start
