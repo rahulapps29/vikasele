@@ -572,3 +572,78 @@ sudo ls -l /etc/nginx/sites-enabled/
 sudo certbot --nginx -d rrpchambers.prupley.com
 pm2 start npm --name rrpchambersprupleybuild -- start
 pm2 save
+
+
+
+
+sudo nano /etc/nginx/sites-available/report_rahulluthra.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name report.rahulluthra.in;  
+
+ location / {
+        proxy_pass http://localhost:4054;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo ln -s /etc/nginx/sites-available/report_rahulluthra.in /etc/nginx/sites-enabled/
+
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d report.rahulluthra.in 
+pm2 start npm --name report_rahulluthra -- start
+pm2 save
+
+
+
+sudo nano /etc/nginx/sites-available/orbe.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name www.orbe.in orbe.in;  
+
+ location / {
+        proxy_pass http://localhost:4048;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo ln -s /etc/nginx/sites-available/orbe.in /etc/nginx/sites-enabled/
+
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d orbe.in -d www.orbe.in
+pm2 start npm --name orbebuild -- start
+pm2 save
+
+
+sudo nano /etc/nginx/sites-available/drive_orbe.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name drive.orbe.in; 
+
+ location / {
+        proxy_pass http://localhost:4039;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo ln -s /etc/nginx/sites-available/drive_orbe.in /etc/nginx/sites-enabled/
+
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d drive.orbe.in
+pm2 start npm --name orbedrivebuild -- start
+pm2 save
