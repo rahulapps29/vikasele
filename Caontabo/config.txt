@@ -654,7 +654,7 @@ server {
 ln -s /etc/nginx/sites-available/frontend_sslegal.in /etc/nginx/sites-enabled/
 
 
-sudo certbot --nginx -d sslegal.pruplay.com
+sudo certbot --nginx -d sslegal.pruply.com
 pm2 start npm --name sslegalbuild -- start
 pm2 save
 
@@ -675,10 +675,10 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
+sudo rm /etc/nginx/sites-enabled/mailadmin_prupley.in
+sudo ln -s /etc/nginx/sites-available/mailadmin_prupley.in /etc/nginx/sites-enabled/
 
-ln -s /etc/nginx/sites-available/mailadmin_prupley.in /etc/nginx/sites-enabled/
 
-
-sudo certbot --nginx -d mainadmin.pruplay.com
+sudo certbot --nginx -d mailadmin.prupley.com
 pm2 start npm --name mailadminprupley -- start
 pm2 save
