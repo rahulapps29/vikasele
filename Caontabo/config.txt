@@ -182,9 +182,53 @@ pm2 save
 
 
 
+sudo nano /etc/nginx/sites-available/ledger_rahulluthra.in
 
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name ledger.rahulluthra.in;  
 
+ location / {
+        proxy_pass http://localhost:4017;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
 
+sudo rm /etc/nginx/sites-enabled/ledger_rahulluthra.in
+sudo ln -s /etc/nginx/sites-available/ledger_rahulluthra.in /etc/nginx/sites-enabled/
+
+sudo ls -l /etc/nginx/sites-enabled/
+sudo certbot --nginx -d ledger.rahulluthra.in 
+pm2 start npm --name rahulluthra_ledger_build -- start
+pm2 save
+
+sudo nano /etc/nginx/sites-available/records_rahulluthra.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name records.rahulluthra.in;  
+
+ location / {
+        proxy_pass http://localhost:4018;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+sudo rm /etc/nginx/sites-enabled/records_rahulluthra.in
+sudo ln -s /etc/nginx/sites-available/records_rahulluthra.in /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-enabled/
+sudo certbot --nginx -d records.rahulluthra.in 
+sudi oufw allow 4018
+pm2 start npm --name rahulluthra_records_build -- start
+pm2 save
 
 sudo nano /etc/nginx/sites-available/algoapp.in
 
@@ -233,29 +277,6 @@ sudo certbot --nginx -d utility.rahulluthra.in
 sudo certbot --nginx -d photos.rahulluthra.in 
 
 
-sudo nano /etc/nginx/sites-available/ledger_rahulluthra.in
-
-server {
- listen 80;  # Listen on port 80 for incoming HTTP requests
- server_name ledger.rahulluthra.in;  
-
- location / {
-        proxy_pass http://localhost:4017;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-sudo ln -s /etc/nginx/sites-available/ledger_rahulluthra.in /etc/nginx/sites-enabled/
-
-sudo ls -l /etc/nginx/sites-enabled/
-
-sudo certbot --nginx -d rahulluthra.in  -d www.rahulluthra.in 
-sudo certbot --nginx -d backend.rahulluthra.in 
-sudo certbot --nginx -d utility.rahulluthra.in 
-sudo certbot --nginx -d ledger.rahulluthra.in 
 
 
 
@@ -325,26 +346,7 @@ sudo certbot --nginx -d flipkartb.algoapp.in
 pm2 start npm --name algoapp_flipkart_backend -- start
 
 
-sudo nano /etc/nginx/sites-available/records_rahulluthra.in
 
-server {
- listen 80;  # Listen on port 80 for incoming HTTP requests
- server_name records.rahulluthra.in;  
-
- location / {
-        proxy_pass http://localhost:4018;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-sudo ln -s /etc/nginx/sites-available/records_rahulluthra.in /etc/nginx/sites-enabled/
-
-sudo ls -l /etc/nginx/sites-enabled/
-
-sudo certbot --nginx -d records.rahulluthra.in 
 
 sudo nano /etc/nginx/sites-available/amanproperties.in
 
