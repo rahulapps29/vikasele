@@ -24,28 +24,9 @@ server {
     }
 }
 
-ln -s /etc/nginx/sites-available/vikaselectricals.shop /etc/nginx/sites-enabled/
-sudo ln -s /etc/nginx/sites-available/survana.in /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/vikaselectricals.shop /etc/nginx/sites-enabled/
 
-sudo nano /etc/nginx/sites-available/survana.in
-server {
- listen 80;  # Listen on port 80 for incoming HTTP requests
- server_name survana.in www.survana.in; 
 
- 
-    location / {
-        proxy_pass http://localhost:4077;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-
-certbot --nginx -d video.survana.in
-certbot --nginx -d survana.in -d www.survana.in
-ls -l /etc/nginx/sites-enabled/
 
 
 apt install certbot python3-certbot-nginx -y
@@ -87,27 +68,11 @@ server {
     }
 }
 
-sudo nano /etc/nginx/sites-available/backend_gatelockorbe.in
 
-server {
- listen 80;  # Listen on port 80 for incoming HTTP requests
- server_name lockbackend.orbe.in;  
 
- location / {
-        proxy_pass http://localhost:4075;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
 
-ln -s /etc/nginx/sites-available/backend_gatelockorbe.in /etc/nginx/sites-enabled/
-sudo ls -l /etc/nginx/sites-enabled/
 
-sudo certbot --nginx -d lockbackend.orbe.in
-sudo certbot --nginx -d lock.orbe.in
+
 sudo nano /etc/nginx/sites-available/frontend_gatelockorbe.in
 
 server {
@@ -274,9 +239,89 @@ server {
 sudo rm /etc/nginx/sites-enabled/report_rahulluthra.in
 sudo ln -s /etc/nginx/sites-available/report_rahulluthra.in /etc/nginx/sites-enabled/
 sudo ls -l /etc/nginx/sites-enabled/
-
+sudo ufw allow 4054
 pm2 start npm --name report_rahulluthra -- start
 pm2 save
+
+
+
+sudo nano /etc/nginx/sites-available/backend_gatelockorbe.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name lockbackend.orbe.in;  
+
+ location / {
+        proxy_pass http://localhost:4075;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+sudo rm /etc/nginx/sites-enabled/backend_gatelockorbe.in
+sudo ln -s /etc/nginx/sites-available/backend_gatelockorbe.in /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-enabled/
+sudo ufw allow 4075
+sudo certbot --nginx -d lockbackend.orbe.in
+pm2 start npm --name lock_controller -- start
+pm2 save
+
+
+sudo nano /etc/nginx/sites-available/survana.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name survana.in www.survana.in; 
+
+ 
+    location / {
+        proxy_pass http://localhost:4077;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo rm /etc/nginx/sites-enabled/survana.in
+sudo ln -s /etc/nginx/sites-available/survana.in /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d survana.in -d www.survana.in
+pm2 start npm --name survana_build -- start
+pm2 save
+
+
+
+sudo nano /etc/nginx/sites-available/backend_survana.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name video.survana.in;
+
+ 
+    location / {
+        proxy_pass http://localhost:4041;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+sudo rm /etc/nginx/sites-enabled/backend_survana.in
+sudo ln -s /etc/nginx/sites-available/backend_survana.in /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d video.survana.in
+pm2 start npm --name backend_survana -- start
+pm2 save
+
 
 sudo nano /etc/nginx/sites-available/algoapp.in
 
@@ -689,3 +734,17 @@ sudo ln -s /etc/nginx/sites-available/mailadmin_prupley.in /etc/nginx/sites-enab
 sudo certbot --nginx -d mailadmin.prupley.com
 pm2 start npm --name mailadminprupley -- start
 pm2 save
+
+
+
+localfile upload to server
+
+#!/bin/bash
+rsync -avz -e "ssh -p 22" \
+  --exclude "node_modules" \
+  ~/Documents/webserver/orbe/ \
+  rahul@161.97.80.191:~/webserver/orbe/
+ 
+
+
+  --exclude ".git" \
