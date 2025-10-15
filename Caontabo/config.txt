@@ -381,6 +381,33 @@ pm2 start npm --name orbebuild -- start
 pm2 save
 
 
+
+sudo nano /etc/nginx/sites-available/drive_orbe.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name drive.orbe.in; 
+
+ location / {
+        proxy_pass http://localhost:4039;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+sudo rm /etc/nginx/sites-enabled/drive_orbe.in
+sudo ln -s /etc/nginx/sites-available/drive_orbe.in /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d drive.orbe.in
+sudo ufw allow 4039
+pm2 start npm --name orbedrivebuild -- start
+pm2 save
+
+
 sudo nano /etc/nginx/sites-available/algoapp.in
 
 server {
@@ -650,28 +677,6 @@ pm2 save
 
 
 
-sudo nano /etc/nginx/sites-available/drive_orbe.in
-
-server {
- listen 80;  # Listen on port 80 for incoming HTTP requests
- server_name drive.orbe.in; 
-
- location / {
-        proxy_pass http://localhost:4039;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-sudo ln -s /etc/nginx/sites-available/drive_orbe.in /etc/nginx/sites-enabled/
-
-sudo ls -l /etc/nginx/sites-enabled/
-
-sudo certbot --nginx -d drive.orbe.in
-pm2 start npm --name orbedrivebuild -- start
-pm2 save
 
 
 sudo nano /etc/nginx/sites-available/prupley.com
