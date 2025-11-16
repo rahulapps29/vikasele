@@ -120,7 +120,7 @@ server {
 sudo rm /etc/nginx/sites-enabled/rahulluthra.in
 sudo ln -s /etc/nginx/sites-available/rahulluthra.in /etc/nginx/sites-enabled/
 sudo ls -l /etc/nginx/sites-enabled/
-sudo certbot --nginx -d rahulluthra.in  -d www.rahulluthra.in 
+sudo certbot --nginx -d rahulluthra.in  -d www.rahulluthra.in
 pm2 start npm --name rahulluthra_build -- start
 pm2 save
 
@@ -356,6 +356,35 @@ pm2 start npm --name rrpchambersprupleybuild -- start
 pm2 save
 
 
+sudo nano /etc/nginx/sites-available/rrpchambers_prupley.com
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name www.rrpchambers.com rrpchambers.com ;
+
+ location / {
+        proxy_pass http://localhost:4083;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+sudo rm /etc/nginx/sites-enabled/rrpchambers_prupley.com
+sudo ln -s /etc/nginx/sites-available/rrpchambers_prupley.com /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-enabled/
+
+sudo certbot --nginx -d rrpchambers.com -d www.rrpchambers.com
+sudo ufw allow 4083
+pm2 start npm --name rrpchambersprupleybuild -- start
+pm2 save
+
+
+
+
+
 sudo nano /etc/nginx/sites-available/orbe.in
 
 server {
@@ -586,11 +615,20 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
+
+
+sudo rm /etc/nginx/sites-enabled/eduquant_prupley.com
 sudo ln -s /etc/nginx/sites-available/eduquant_prupley.com /etc/nginx/sites-enabled/
-
 sudo ls -l /etc/nginx/sites-enabled/
-
 sudo certbot --nginx -d eduquant.prupley.com
+sudo ufw allow 4082
+pm2 start npm --name prupleyeduquantbuild -- start
+pm2 save
+
+
+
+
+
 
 
 
@@ -609,11 +647,14 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
-sudo ln -s /etc/nginx/sites-available/eduquant.in /etc/nginx/sites-enabled/
 
+sudo rm /etc/nginx/sites-enabled/eduquant.in
+sudo ln -s /etc/nginx/sites-available/eduquant.in /etc/nginx/sites-enabled/
 sudo ls -l /etc/nginx/sites-enabled/
 sudo ls -l /etc/nginx/sites-available/
 
+
+sudo ufw allow 4062
 sudo certbot --nginx -d eduquant.in -d www.eduquant.in
 pm2 start npm --name eduquantbuild -- start
 
@@ -686,7 +727,7 @@ server {
  server_name prupley.com www.prupley.com;  
 
  location / {
-        proxy_pass http://localhost:4039;
+        proxy_pass http://localhost:4074;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -700,6 +741,7 @@ sudo ln -s /etc/nginx/sites-available/prupley.com /etc/nginx/sites-enabled/
 sudo ls -l /etc/nginx/sites-enabled/
 
 sudo certbot --nginx -d prupley.com  -d www.prupley.com
+sudo ufw allow 4074
 pm2 start npm --name prupleybuild -- start
 pm2 save
 

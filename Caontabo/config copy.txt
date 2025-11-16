@@ -1,0 +1,50 @@
+sudo nano /etc/nginx/sites-available/utilitybackend_orbe.in
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name utility.orbe.in;  
+
+ location / {
+        proxy_pass http://localhost:4028;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+sudo rm /etc/nginx/sites-enabled/utilitybackend_orbe.in
+sudo ln -s /etc/nginx/sites-available/utilitybackend_orbe.in /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-enabled/
+
+
+sudo certbot --nginx -d utility.orbe.in 
+sudo ufw allow 4028
+pm2 start npm --name orbe_utility_build -- start
+pm2 save
+
+
+sudo rm /etc/nginx/sites-available/rahul_orbe.in
+sudo nano /etc/nginx/sites-available/rahul_orbe.in
+
+server {
+ listen 80;  # Listen on port 80 for incoming HTTP requests
+ server_name rahul.orbe.in;
+
+ location / {
+        proxy_pass http://localhost:4011;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+sudo rm /etc/nginx/sites-enabled/rahul_orbe.in
+sudo ln -s /etc/nginx/sites-available/rahul_orbe.in /etc/nginx/sites-enabled/
+sudo ls -l /etc/nginx/sites-enabled/
+sudo ufw allow 4011
+sudo certbot --nginx -d rahul.orbe.in 
+pm2 start npm --name rahulorbe_build -- start
+pm2 save
